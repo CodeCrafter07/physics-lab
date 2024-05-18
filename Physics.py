@@ -10,7 +10,7 @@ class Simulator:
         self.circle = 0
         self.width, self.height = 1000, 550
         self.clock = pygame.time.Clock()
-        self.cover = pygame.image.load("icon.png")
+        self.cover = pygame.image.load("resources/icon.png")
 
         self.white = 0, 0, 0
         self.yellow = 255, 255, 100
