@@ -1,9 +1,9 @@
-import Physics
+import resources.physics as physics
 
-simulator = Physics.Simulator()
+simulator = physics.Simulator()
 simulator.create_window()
 
-ball = Physics.Ball(simulator, simulator.height)
+ball = physics.Ball(simulator, simulator.height)
 
 while simulator.running:
     if ball.shouldFollow:
