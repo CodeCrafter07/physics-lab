@@ -24,7 +24,6 @@ class Simulator:
     def create_window(self, window_title="Physics", width=1000, height=550, colour=(0, 206, 209)):
         self.width, self.height = width, height
         self.window_colour = colour
-        print(self.window_colour)
         self.screen = pygame.display.set_mode((self.width, self.height + 100))
         pygame.display.set_caption(window_title)
         pygame.display.set_icon(self.cover)
@@ -56,7 +55,6 @@ class Ball:
         self.screen = game.screen
         self.ball_colour = 0, 0, 0
         self.ball_colour = colour
-        print(self.ball_colour)
         self.xVelocity, self.yVelocity = 0, 0
         self.bounceFriction = bounce
         self.friction = friction
