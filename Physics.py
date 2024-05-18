@@ -38,6 +38,7 @@ class Simulator:
             # Check for QUIT event
             if event.type == pygame.QUIT:
                 self.running = False
+                pygame.quit()
 
             if event.type == pygame.MOUSEMOTION:
                 self.dx, self.dy = event.rel
