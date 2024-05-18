@@ -12,7 +12,7 @@ class Simulator:
         self.clock = pygame.time.Clock()
         self.cover = pygame.image.load("resources/icon.png")
 
-        self.white = 0, 0, 0
+        self.window_colour = 0, 0, 0
         self.yellow = 255, 255, 100
         self.running = True
         self.xVelocity, self.yVelocity = 0, 0
@@ -21,15 +21,17 @@ class Simulator:
         self.follow = True
         self.dx, self.dy = 0, 0
 
-    def create_window(self, window_title="Physics", width=1000, height=550):
+    def create_window(self, window_title="Physics", width=1000, height=550, colour=(0, 206, 209)):
         self.width, self.height = width, height
+        self.window_colour = colour
+        print(self.window_colour)
         self.screen = pygame.display.set_mode((self.width, self.height + 100))
         pygame.display.set_caption(window_title)
         pygame.display.set_icon(self.cover)
 
     def update(self, ball):
         pygame.display.flip()
-        self.screen.fill(self.white)
+        self.screen.fill(self.window_colour)
 
         self.clock.tick(40)
 
@@ -48,12 +50,13 @@ class Simulator:
 
 
 class Ball:
-    def __init__(self, game, color=(255, 255, 100), bounce=(3/4), friction=(19/20), size=10):
+    def __init__(self, game, colour=(255, 255, 0), bounce=(3/4), friction=(19/20), size=10):
         self.width, self.height = game.width, game.height
         self.mouse = pygame.mouse
         self.screen = game.screen
-        self.white = 0, 0, 0
-        self.ball_color = 255, 255, 100
+        self.ball_colour = 0, 0, 0
+        self.ball_colour = colour
+        print(self.ball_colour)
         self.xVelocity, self.yVelocity = 0, 0
         self.bounceFriction = bounce
         self.friction = friction
@@ -62,7 +65,7 @@ class Ball:
         self.size = size
 
         self.xPos, self.yPos = self.width / 2, self.height / 2
-        self.circle = pygame.draw.circle(self.screen, self.ball_color, [self.width / 2, self.height / 2], 10)
+        self.circle = pygame.draw.circle(self.screen, self.ball_colour, [self.width / 2, self.height / 2], 10)
 
     def follow_mouse(self):
         self.mouse.set_visible(False)
@@ -107,7 +110,7 @@ class Ball:
             self.yPos -= self.yVelocity
             self.xPos += self.xVelocity
 
-        self.circle = pygame.draw.circle(self.screen, self.ball_color, [self.xPos, self.yPos], self.size)
+        self.circle = pygame.draw.circle(self.screen, self.ball_colour, [self.xPos, self.yPos], self.size)
 
     def switch_mode(self, dx, dy):
         self.shouldFollow = not self.shouldFollow
