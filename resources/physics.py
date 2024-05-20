@@ -28,6 +28,9 @@ class Simulator:
         pygame.display.set_caption(window_title)
         pygame.display.set_icon(self.cover)
 
+    def set_icon(self, image):
+        pygame.display.set_icon(image)
+
     def update(self, ball):
         pygame.display.flip()
         self.screen.fill(self.window_colour)
